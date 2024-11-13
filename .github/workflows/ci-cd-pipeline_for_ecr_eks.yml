@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Student App Deploying to Amazon ECR and EKS cluster
 
 on:
   push:
@@ -8,36 +8,105 @@ on:
     branches:
       - master
 
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY_WEB: studentuser03_app_my_docker_image_4_ecr #repo-name
+  EKS_CLUSTER: studentuser03-cluster #clustername
+
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
-  build-and-test:
+  checkout-instal-ctl-build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the code
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # Step 2: Set up Python
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'  # Change to the version your project requires
+      - name: Read version from file
+        id: read-version
+        run: |
+          APP_VERSION=$(grep 'app_version=' version.txt | cut -d'=' -f2)
 
-    # Step 3: Install dependencies
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
 
-    # Step 4: Run tests
-    - name: Run tests
-      run: |
-        python manage.py test
+          # Export the versions as environment variables
+          echo "APP_TAG=${APP_VERSION}" >> $GITHUB_ENV
 
-  deploy:
-    needs: build-and-test  # Runs after the build-and-test job is successful
-    runs-on: ubuntu-latest
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: "latest"
+        id: install-kubectl
 
-    steps:
-    - name: Deploy to Server (Placeholder)
-      run: echo "Deployment step would go here"
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+
+      - name: Assume role and set AWS credentials
+        id: assume_role
+        run: |
+          SESSION=$(aws sts assume-role \
+            --role-arn arn:aws:iam::528383356345:user/StudentUser03 \
+            --serial-number arn:aws:iam::528383356345:user/StudentUser03 \
+            --role-session-name test \
+            --query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
+            --output text)
+
+          if [ -z "$SESSION" ]; then
+            echo "Failed to assume role"
+            exit 1
+          else
+            echo "AWS_ACCESS_KEY_ID=$(echo $SESSION | cut -d' ' -f1)" >> $GITHUB_ENV
+            echo "AWS_SECRET_ACCESS_KEY=$(echo $SESSION | cut -d' ' -f2)" >> $GITHUB_ENV
+            echo "AWS_SESSION_TOKEN=$(echo $SESSION | cut -d' ' -f3)" >> $GITHUB_ENV
+          fi
+
+      - name: Configure AWS Credentials with Assumed Role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ env.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push app image to Amazon ECR
+        id: build-image-app
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ env.APP_TAG }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_WEB:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_WEB:$IMAGE_TAG
+
+     
+
+      - name: Deploy to EKS
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG_APP: ${{ env.APP_TAG }}
+
+        run: |
+          # Define image variables
+          APP_IMAGE="$ECR_REGISTRY/$ECR_REPOSITORY_WEB:$IMAGE_TAG_APP"
+
+          # Export the images as environment variables
+          echo "APP_IMAGE=${APP_IMAGE}" >> $GITHUB_ENV
+
+          export AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
+          export AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
+          export AWS_SESSION_TOKEN=${{ env.AWS_SESSION_TOKEN }}
+
+          aws eks update-kubeconfig --name $EKS_CLUSTER --region $AWS_REGION
+
+          kubectl set image deployments/student-app student-app=$APP_IMAGE
