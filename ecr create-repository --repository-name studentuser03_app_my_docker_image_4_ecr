@@ -1,0 +1,242 @@
+{
+    "repositories": [
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/hadeed",
+            "registryId": "528383356345",
+            "repositoryName": "hadeed",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/hadeed",
+            "createdAt": "2024-06-05T12:15:12.093000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/mlai-project1unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "mlai-project1unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/mlai-project1unicorn",
+            "createdAt": "2024-06-05T12:17:13.361000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/mlai-project5unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "mlai-project5unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/mlai-project5unicorn",
+            "createdAt": "2024-06-05T12:17:52.132000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/containers_deployments",
+            "registryId": "528383356345",
+            "repositoryName": "containers_deployments",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/containers_deployments",
+            "createdAt": "2024-06-27T22:07:32.957000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/financesvc-unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "financesvc-unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/financesvc-unicorn",
+            "createdAt": "2024-06-05T12:11:22.450000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/student_app_03",
+            "registryId": "528383356345",
+            "repositoryName": "student_app_03",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/student_app_03",
+            "createdAt": "2024-10-27T13:03:18.424000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/studentusr_my_app01_4_ecr",
+            "registryId": "528383356345",
+            "repositoryName": "studentusr_my_app01_4_ecr",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/studentusr_my_app01_4_ecr",
+            "createdAt": "2024-11-11T20:39:10.889000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/amp-software",
+            "registryId": "528383356345",
+            "repositoryName": "amp-software",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/amp-software",
+            "createdAt": "2024-06-05T12:10:08.679000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/consumerretailer-unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "consumerretailer-unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/consumerretailer-unicorn",
+            "createdAt": "2024-06-05T12:10:34.136000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/enterprisetech-unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "enterprisetech-unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/enterprisetech-unicorn",
+            "createdAt": "2024-06-05T12:11:03.102000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/industrial-unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "industrial-unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/industrial-unicorn",
+            "createdAt": "2024-06-05T12:12:52.788000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/mlai-project2unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "mlai-project2unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/mlai-project2unicorn",
+            "createdAt": "2024-06-05T12:17:24.957000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/mlai-project3unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "mlai-project3unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/mlai-project3unicorn",
+            "createdAt": "2024-06-05T12:17:34.381000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/mlai-project4unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "mlai-project4unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/mlai-project4unicorn",
+            "createdAt": "2024-06-05T12:17:43.195000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/portfolio-repo",
+            "registryId": "528383356345",
+            "repositoryName": "portfolio-repo",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/portfolio-repo",
+            "createdAt": "2024-10-27T11:04:02.931000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/healthcarelifesci-unicorn",
+            "registryId": "528383356345",
+            "repositoryName": "healthcarelifesci-unicorn",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/healthcarelifesci-unicorn",
+            "createdAt": "2024-06-05T12:11:40.604000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        },
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:528383356345:repository/deenfalah-akhirat",
+            "registryId": "528383356345",
+            "repositoryName": "deenfalah-akhirat",
+            "repositoryUri": "528383356345.dkr.ecr.us-east-1.amazonaws.com/deenfalah-akhirat",
+            "createdAt": "2024-06-05T12:13:07.233000+05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": false
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        }
+    ]
+}
